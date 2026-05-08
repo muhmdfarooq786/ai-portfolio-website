@@ -152,7 +152,7 @@ with col_right:
     st.markdown("### Hire Me")
     st.write("Ready to scale your business with smart technology.")
     # Professional dark theme button with contrasting white writing
-    st.markdown('<a href="YOUR_FIVERR_PROFILE_LINK" target="_blank"><button style="background-color: #4CAF50; color: white; padding: 12px 24px; border: none; border-radius: 5px; cursor: pointer; font-size: 1rem;">View Fiverr Profile</button></a>', unsafe_allow_html=True) # UPDATE THIS
+    st.markdown('<a href="https://web.whatsapp.com/" target="_blank"><button style="background-color: #4CAF50; color: white; padding: 12px 24px; border: none; border-radius: 5px; cursor: pointer; font-size: 1rem;">View Fiverr Profile</button></a>', unsafe_allow_html=True) # UPDATE THIS
 
 st.markdown("---")
 st.markdown("<p style='text-align: center; color: #FFFFFF;'> Designed and Developed by Muhammad Farooq | © 2026</p>", unsafe_allow_html=True)
