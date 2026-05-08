@@ -2,148 +2,95 @@ import streamlit as st
 import pandas as pd
 import io
 
-# Page Configuration - Set title and wide layout
+# Page Configuration
 st.set_page_config(page_title="AI Solutions Studio", layout="wide", page_icon="🤖")
 
-# --- Custom Styling (Optional but nice) ---
+# --- DARK THEME & CUSTOM STYLING ---
 st.markdown("""
-<style>
-    .main-header {
-        font-size: 3rem !important;
-        color: #4CAF50;
-        text-align: center;
-        margin-bottom: 0.5rem;
+    <style>
+    .main {
+        background-color: #0e1117;
+        color: #ffffff;
     }
-    .sub-header {
-        font-size: 1.5rem !important;
-        color: #555;
+    .stApp {
+        background-color: #0e1117;
+    }
+    .main-title {
+        font-size: 3.5rem !important;
+        color: #4CAF50; /* Green Color */
+        text-align: center;
+        font-weight: bold;
+        margin-bottom: 0px;
+    }
+    .sub-title {
+        font-size: 1.2rem !important;
+        color: #cccccc;
         text-align: center;
         margin-bottom: 2rem;
     }
-    .service-card {
-        border: 1px solid #ddd;
-        border-radius: 10px;
+    footer {
+        background-color: #1a1c23;
         padding: 20px;
-        background-color: #f9f9f9;
-        margin-bottom: 20px;
+        border-radius: 10px;
+        text-align: center;
     }
-</style>
-""", unsafe_allow_html=True)
+    </style>
+    """, unsafe_allow_html=True)
 
-# --- Header Section ---
-st.markdown('<div class="main-header">Custom AI & Python Automation Solutions</div>', unsafe_allow_html=True)
-st.markdown('<div class="sub-header">I help businesses automate repetitive tasks and leverage AI for better productivity.</div>', unsafe_allow_html=True)
+# --- HEADER SECTION ---
+# Yahan Apna Asli Naam Likhein
+st.markdown('<p class="main-title">MUHAMMAD FAROOQ</p>', unsafe_allow_html=True)
+st.markdown('<p class="sub-title">AI Engineer & Python Automation Expert</p>', unsafe_allow_html=True)
 
 st.divider()
 
-# --- Section 1: Portfolio (AI Imagery Showcase) ---
+# --- PORTFOLIO SECTION ---
 st.header("📸 AI Imagery Portfolio")
-st.write("Examples of photorealistic and high-quality images I can generate using AI tools.")
-
-# Creating 3 columns for portfolio images
 col1, col2, col3 = st.columns(3)
-
-# Option A: Using Free Placeholder Image Links (You can change these URLs)
-# Example Links from Unsplash (for demo)
-img_url1 = "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=600&auto=format&fit=crop" # AI Robot
-img_url2 = "https://images.unsplash.com/photo-1549497538-303791108f94?q=80&w=600&auto=format&fit=crop" # Professional Watch
-img_url3 = "https://images.unsplash.com/photo-1598128558393-70ff21433be0?q=80&w=600&auto=format&fit=crop" # Modern Headphone
-
 with col1:
-    st.image(img_url1, caption="AI Concept Visual", use_container_width=True)
+    st.image("https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=600&auto=format&fit=crop", caption="AI Visualization")
 with col2:
-    st.image(img_url2, caption="Realistic Product Photography", use_container_width=True)
+    st.image("https://images.unsplash.com/photo-1549497538-303791108f94?q=80&w=600&auto=format&fit=crop", caption="Product Concept")
 with col3:
-    st.image(img_url3, caption="Commercial Style Branding Image", use_container_width=True)
-
-# Tip for user: "For your final website, replace these URLs with links to images you generated via AI."
+    st.image("https://images.unsplash.com/photo-1598128558393-70ff21433be0?q=80&w=600&auto=format&fit=crop", caption="Modern Branding")
 
 st.divider()
 
-# --- Section 2: Live Demo Tools (Data Cleaner & Text Analyzer) ---
-st.header("🛠️ Live Demo Tools")
-st.write("Test these interactive tools to see how Python solves real problems.")
-
-# Two tabs for different tools
-tab1, tab2 = st.tabs(["🧹 Data Cleaner Tool", "📝 Text Analyzer"])
+# --- TOOLS SECTION ---
+st.header("🛠️ Interactive AI Tools")
+tab1, tab2 = st.tabs(["🧹 Data Cleaner", "📝 Text Analyzer"])
 
 with tab1:
-    st.subheader("Automated CSV Data Cleaner")
-    st.write("Upload a messy CSV file, and I'll clean it (remove empty rows, duplicates).")
-    
-    # Simple example CSV data for client to copy-paste and test
-    st.info("💡 Pro Tip: Try uploading a CSV file with empty lines or duplicate rows.")
-
-    uploaded_file = st.file_uploader("Upload your messy CSV file", type=["csv"])
-
-    if uploaded_file is not None:
-        try:
-            # Read the CSV
-            df = pd.read_csv(uploaded_file)
-            st.write("### Original (Messy) Data:")
-            st.dataframe(df.head(10))
-
-            # --- Cleaning Logic (Python Power!) ---
-            # 1. Remove rows with all empty cells
-            df_cleaned = df.dropna(how='all')
-            # 2. Remove duplicate rows
-            df_cleaned = df_cleaned.drop_duplicates()
-            # 3. Trim whitespace from string columns (optional but good)
-            # (Example of real cleaning)
-
-            st.write("### Cleaned Data:")
-            st.dataframe(df_cleaned.head(10))
-            
-            # --- Provide Cleaned File for Download ---
-            # Convert DF to CSV in memory
-            csv_buffer = io.StringIO()
-            df_cleaned.to_csv(csv_buffer, index=False)
-            csv_string = csv_buffer.getvalue()
-
-            st.download_button(
-                label="📥 Download Cleaned CSV",
-                data=csv_string,
-                file_name="cleaned_data.csv",
-                mime="text/csv"
-            )
-            st.success("Data cleaning successful!")
-
-        except Exception as e:
-            st.error(f"Error processing file: {e}")
+    st.subheader("Smart CSV Cleaner")
+    uploaded_file = st.file_uploader("Upload Messy Data", type=["csv"])
+    if uploaded_file:
+        df = pd.read_csv(uploaded_file)
+        st.write("Cleaned Data Preview:")
+        st.dataframe(df.dropna().drop_duplicates().head(5))
 
 with tab2:
-    st.subheader("Smart Text Analyzer")
-    st.write("Paste your business text, feedback, or data for instant analysis.")
-    
-    text_input = st.text_area("Enter text here (e.g., customer review):")
-    
-    if st.button("Analyze Text"):
-        if text_input:
-            # --- Text Processing Logic ---
-            words = text_input.split()
-            word_count = len(words)
-            char_count = len(text_input)
-            unique_words = len(set(words))
-
-            st.success("✅ Analysis Complete!")
-            # Display results in 3 metrics
-            m1, m2, m3 = st.columns(3)
-            m1.metric("Word Count", word_count)
-            m2.metric("Character Count", char_count)
-            m3.metric("Unique Words", unique_words)
-            
-            # Optional: Add Sentiment analysis later with libraries like TextBlob
-
-        else:
-            st.warning("Please enter some text first.")
+    st.subheader("Fast Text Analyzer")
+    text = st.text_area("Paste text for analysis:")
+    if st.button("Analyze"):
+        st.info(f"Analysis: {len(text.split())} words found.")
 
 st.divider()
 
-# --- Section 3: Contact & Hire Me ---
-st.header("🤝 Let's Collaborate")
-st.write("Are you ready to automate your workflow or integrate AI into your business?")
+# --- CONTACT INFO SECTION ---
+st.header("📩 Get In Touch")
+col_a, col_b = st.columns(2)
 
-# Custom style for freelance button
-st.markdown('<a href="YOUR_FIVERR_OR_UPWORK_PROFILE_LINK" target="_blank"><button style="background-color: #4CAF50; color: white; padding: 12px 24px; border: none; border-radius: 5px; cursor: pointer; font-size: 1rem;">Hire Me on Freelance Platform</button></a>', unsafe_allow_html=True)
-st.write("---")
-st.write("Designed and Developed by [Muhammad Farooq]")
+with col_a:
+    st.write("### Contact Details")
+    st.write("📧 **Email:** muhmdfarooq786@gmail.com") # Apna email likhein
+    st.write("📞 **Phone:** +971 581796545") # Apna number likhein
+    st.write("📞 **Phone:** +92 3411898419") # Apna number likhein
+    st.write("📍 **Location:** Dubai, UAE")
+
+with col_b:
+    st.write("### Hire Me")
+    st.write("Available for Freelance AI & Python Projects.")
+    st.markdown("[Visit My Upwork Profile](#)") # Apna link dalien
+
+st.markdown("---")
+st.markdown("<p style='text-align: center;'>© 2026 Muhammad Farooq | Built with Python & Streamlit</p>", unsafe_allow_html=True)
