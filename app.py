@@ -51,6 +51,13 @@ st.markdown("""
         text-align: center;
         margin-bottom: 2rem;
     }
+    /* Isse caption saaf nazar ayega */
+    .stImage p {
+        color: #ffffff !important;
+        font-weight: bold !important;
+        font-size: 1.1rem !important;
+        text-align: center;
+    }
 </style>
 """, unsafe_allow_html=True)
 
@@ -62,7 +69,7 @@ st.markdown('<div class="sub-header">AI Specialist | Python Automation Expert</d
 st.divider()
 
 # Portfolio Images Section
-st.header("📸 My AI Projects")
+st.header("🚀 Specialized AI Solutionss")
 col1, col2, col3 = st.columns(3)
 
 with col1:
