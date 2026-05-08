@@ -61,23 +61,16 @@ st.markdown('<div class="sub-header">AI Specialist | Python Automation Expert</d
 
 st.divider()
 
-# --- PORTFOLIO SECTION (AI IMAGERY SHOWCASE) ---
-st.header("📸 AI Imagery Portfolio")
-st.write("Examples of high-quality, professional images generated using advanced AI tools.")
-
+# Portfolio Images Section
+st.header("📸 My AI Projects")
 col1, col2, col3 = st.columns(3)
 
-# New Direct Links (Guaranteed to load)
-img_url1 = "https://cdn.pixabay.com/photo/2023/12/12/10/59/ai-generated-8445101_1280.jpg" # Professional AI Visual
-img_url2 = "https://cdn.pixabay.com/photo/2023/12/12/10/59/ai-generated-8445102_1280.jpg" # Futuristic Technology Visual
-img_url3 = "https://cdn.pixabay.com/photo/2023/12/12/10/59/ai-generated-8445100_1280.jpg" # Clean Product Aesthetic (New Attractive Image)
-
 with col1:
-    st.image(img_url1, caption="AI Concept Visual", use_container_width=True)
+    st.image("pic1.jpg", caption="AI Smart Tools", use_container_width=True)
 with col2:
-    st.image(img_url2, caption="Advanced Tech Concept", use_container_width=True)
+    st.image("pic2.jpg", caption="AI Business Help", use_container_width=True)
 with col3:
-    st.image(img_url3, caption="Realistic Product Photography", use_container_width=True) # New Label
+    st.image("pic3.jpg", caption="Data Automation", use_container_width=True)
 
 st.divider()
 
